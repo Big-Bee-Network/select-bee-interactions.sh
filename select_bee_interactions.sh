@@ -1,7 +1,10 @@
 #!/bin/bash
 #
 # Compiles a dataset with at least one interacting
-# organisms associated with DiscoverLife bee checklist.
+# organisms associated with DiscoverLife bee checklist. 
+# Note that if a source/target taxon is specified as a higher order
+# taxon that *may* be of Apoidea (bee/wasps), they are included also.
+# Examples include: Arthropoda, Insecta, Hymenoptera.
 #
 # also see https://github.com/globalbioticinteractions/globalbioticinteractions/issues/984
 #
@@ -73,6 +76,7 @@ function select_bee_interactions {
    | nomer append --properties <(schema "sourceTaxonName") discoverlife\
    | nomer append --properties <(schema "targetTaxonName") discoverlife\
    | grep -v NONE.*NONE\
+   | grep "Apoidea"\
    | cut -f1-$(number_of_fields)
 }
 
