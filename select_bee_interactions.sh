@@ -76,7 +76,6 @@ function select_bee_interactions {
    | nomer append --properties <(schema "sourceTaxonName") discoverlife\
    | nomer append --properties <(schema "targetTaxonName") discoverlife\
    | grep -v NONE.*NONE\
-   | grep "Apoidea"\
    | cut -f1-$(number_of_fields)
 }
 
