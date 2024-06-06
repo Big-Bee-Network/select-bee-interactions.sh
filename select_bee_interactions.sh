@@ -72,7 +72,7 @@ function select_bee_interactions {
    | nomer replace --properties <(schema "targetTaxonName") gbif-parse\
    | nomer append --properties <(schema "sourceTaxonName") discoverlife\
    | nomer append --properties <(schema "targetTaxonName") discoverlife\
-   | grep -v NONE\
+   | grep -v NONE.*NONE\
    | cut -f1-$(number_of_fields)
 }
 
