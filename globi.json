@@ -12,7 +12,7 @@
       "@language" : "en"
     } ],
     "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/" ],
-    "url" : "bee-interactions.tsv.gz",
+    "url" : "bee-interactions-2024-06-07.tsv.gz",
     "dcterms:bibliographicCitation" : "Seltmann KC, Poelen JH (2024) Likely Apoidea (bees and wasps) Interactions Extracted from Global Biotic Interactions Verbatim Data Product using Nomer's DiscoverLife Support.",
     "delimiter" : "\t",
     "headerRowCount" : 1,
