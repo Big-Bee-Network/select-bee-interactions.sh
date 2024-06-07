@@ -2,7 +2,10 @@
   "@context" : [ "http://www.w3.org/ns/csvw", {
     "@language" : "en"
   } ],
-  "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/. Note that this dataset is not re-indexed by GloBI by setting \"deprecated\" : \"true\"" ],
+  "rdfs:comment" : [ 
+    "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/.",
+    "Note that this dataset is not re-indexed by GloBI by setting \"deprecated\" : \"true\"" 
+  ],
   "deprecated": "true",
   "tables" : [ {
     "@context" : [ "http://www.w3.org/ns/csvw", {
