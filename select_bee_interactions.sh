@@ -36,9 +36,14 @@
 #   file:///${PWD}/bees.tsv.gz
 
 interactions_tsv_gz=${1:-"https://zenodo.org/record/8284068/files/verbatim-interactions.tsv.gz"}
+interactions_2023-08-23_verbatim_release="hash://sha256/965718c7a9ec4ec1adc98413b52e31c090ad1ba5a04be088d579c5c9d59ffef0"
+interactions_2024-06-07_verbatim_snapshot="hash://sha256/6ba7bf2e6be5063c3a5162f24748d57f8f6361ad4913449faa2f1147578b8bc4"
+
 
 function interactions {
-  curl --silent -L "${interactions_tsv_gz}"\
+  #curl --silent -L "${interactions_tsv_gz}"\
+  # preston cat hash://sha256/965718c7a9ec4ec1adc98413b52e31c090ad1ba5a04be088d579c5c9d59ffef0\
+  preston cat ${interactions_2024-06-07_verbatim_snapshot}\
    | gunzip
 }
 
