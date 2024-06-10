@@ -12,7 +12,7 @@
 # 
 #
 # author: Jorrit H. Poelen
-# date: 2024-06-06
+# date: 2024-06-06/2024-06-10
 #
 # usage:
 #   select_bee_interactions [interactions.tsv.gz content id (aka content hash)]    
@@ -35,23 +35,31 @@
 # For local files, please use file urls like: 
 #   file:///${PWD}/bees.tsv.gz
 
+set -x
+
 interactions_2023_08_23_verbatim_release="hash://md5/a18697d59e5f6756c22d8c4a1346685e"
 interactions_2024_06_07_verbatim_snapshot="hash://md5/7e11573d83b2bac6425ee2482c4d73bc"
-interactions_tsv_gz_hash=${1:-${interactions_2023_08_23_verbatim_release}}
+interactions_tsv_gz_hash=${1:-hash://md5/7e11573d83b2bac6425ee2482c4d73bc}
 
 
 function interactions {
-  preston cat --remote https://linker.bio ${interactions_tsv_gz_hash}\
+  # prefetch interactions as referenced by their content id
+  preston cat --remote https://linker.bio ${interactions_tsv_gz_hash} > /dev/null
+  # get the interaction data, and uncompress
+  preston cat ${interactions_tsv_gz_hash}\
    | gunzip
 }
 
 function header {
+  # prints the first linke of the interactions to be used as the header
+  # of the original results
   interactions\
    | head -1\
    | tr '\t' '\n'
 }
 
 function find_index_of_field_header {
+  # get the column number (if any) for provided input
   header\
    | nl -v 0 -s ':'\
    | grep "$1"\
@@ -60,10 +68,13 @@ function find_index_of_field_header {
 }
 
 function number_of_fields {
+  # counts the number of columns in the header
   header | wc -l 
 }
 
 function schema {
+  # generates the input/output nomer schema to configure name alignment
+  # for selected interactions.tsv.gz data. 
   field_index=$(find_index_of_field_header "$1")
   echo "$(cat <<_EOF_
 nomer.schema.input=[{"column": ${field_index},"type":"name"}]
@@ -74,18 +85,18 @@ _EOF_
 
 
 function select_bee_interactions {
-   nomer replace --properties <(schema "sourceTaxonName") gbif-parse\
+   nomer replace --properties <(schema "sourceTaxonName") gbif-parse `# parse taxonomic name to facilitate matching (e.g., Apis mellifera L. -> Apis mellifera)`\
    | nomer replace --properties <(schema "targetTaxonName") gbif-parse\
-   | nomer append --properties <(schema "sourceTaxonName") discoverlife\
+   | nomer append --properties <(schema "sourceTaxonName") discoverlife `# align provided names with the discoverlife matcher/checklist`\
    | nomer append --properties <(schema "targetTaxonName") discoverlife\
-   | grep -v NONE.*NONE\
-   | grep -E "Andrenidae|Apidae|Colletidae|Halictidae|Megachilidae|Melittidae|Stenotritidae"\
-   | cut -f1-$(number_of_fields)
+   | grep -v NONE.*NONE `# only include interactions with one or more names known to DiscoverLife bee checklist`\
+   | grep -E "Andrenidae|Apidae|Colletidae|Halictidae|Megachilidae|Melittidae|Stenotritidae" `# only include interaction records that mention at least one of the known bee families`\
+   | cut -f1-$(number_of_fields) `# only include the original verbatim data, not the appended alignments`
 }
 
-cat\
- <(interactions | head -n1)\
+cat `# create a file with a header and interactions with bees only`\
+ <(interactions | head -n1) `# print the header`\
  <(interactions\
  | pv -l\
- | select_bee_interactions\
+ | select_bee_interactions `# then append selected bee interactions`\
  )
