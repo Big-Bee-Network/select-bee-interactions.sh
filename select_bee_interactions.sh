@@ -15,10 +15,10 @@
 # date: 2024-06-06
 #
 # usage:
-#   select_bee_interactions [interactions.tsv.gz url]    
+#   select_bee_interactions [interactions.tsv.gz content id (aka content hash)]    
 
 # example:
-#   select_bee_interactions "https://zenodo.org/record/8284068/files/verbatim-interactions.tsv.gz"
+#   select_bee_interactions "hash://md5/7e11573d83b2bac6425ee2482c4d73bc"
 #
 # expected output:
 #   only interaction records involving some name known to Nomer's usage of the DiscoverLife Bee Checklist [3,4]
@@ -35,13 +35,13 @@
 # For local files, please use file urls like: 
 #   file:///${PWD}/bees.tsv.gz
 
-interactions_2023_08_23_verbatim_release="hash://sha256/965718c7a9ec4ec1adc98413b52e31c090ad1ba5a04be088d579c5c9d59ffef0"
-interactions_2024_06_07_verbatim_snapshot="hash://sha256/6ba7bf2e6be5063c3a5162f24748d57f8f6361ad4913449faa2f1147578b8bc4"
+interactions_2023_08_23_verbatim_release="hash://md5/a18697d59e5f6756c22d8c4a1346685e"
+interactions_2024_06_07_verbatim_snapshot="hash://md5/7e11573d83b2bac6425ee2482c4d73bc"
 interactions_tsv_gz_hash=${1:-${interactions_2023_08_23_verbatim_release}}
 
 
 function interactions {
-  preston cat ${interactions_tsv_gz_hash}\
+  preston cat --remote https://linker.bio ${interactions_tsv_gz_hash}\
    | gunzip
 }
 
