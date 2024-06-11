@@ -1,4 +1,4 @@
-[![GloBI Review by Elton](../../actions/workflows/review.yml/badge.svg)](../../actions/workflows/review.yml)
+[![GloBI Review by Elton](../../actions/workflows/review.yml/badge.svg)](../../actions/workflows/review.yml) [![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/Big-Bee-Network/select-bee-interactions.sh/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/Big-Bee-Network/select-bee-interactions.sh)
 
 [select-bee-interactions.sh](select-bee-interactions.sh) helps to select bee only biotic interactions from verbatim interactions indexed by GloBI using Nomer's support for DiscoverLife Bee Checklist [1,2].
 
