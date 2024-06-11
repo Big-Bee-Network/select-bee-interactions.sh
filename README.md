@@ -12,7 +12,7 @@ This includes [`bees-only-interactions.tsv.gz`](examples/2024-06-07/bees-only-in
  > bees-only-interactions.tsv.gz
 ```
 
-For each example, a GloBI index configuration (e.g., [globi.json](examples/2024-06-07/globi.json)) was created to enable an automated data review of this specific subset of GloBI-indexed biotic interactions. Please inspect the [GitHub Actions configuration](.github/actions/review.yml) if you'd like to learn more about this automated review process. 
+For each example, a GloBI index configuration (e.g., [globi.json](examples/2024-06-07/globi.json)) was created to enable an automated data review of this specific subset of GloBI-indexed biotic interactions. Please inspect the [GitHub Actions configuration](.github/workflows/review.yml) if you'd like to learn more about this automated review process. 
 
 
 ## References
