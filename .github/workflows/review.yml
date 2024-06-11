@@ -13,7 +13,13 @@ on:
 
 jobs:
   review:
+    strategy:
+      matrix:
+        globi-version: [2023-08-23, 2024-06-07] 
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: ./${{ matrix.globi-version }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 1.8

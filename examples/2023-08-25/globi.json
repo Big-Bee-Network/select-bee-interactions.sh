@@ -1,0 +1,392 @@
+{
+  "@context" : [ "http://www.w3.org/ns/csvw", {
+    "@language" : "en"
+  } ],
+  "rdfs:comment" : [ 
+    "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/.",
+    "Note that this dataset is not re-indexed by GloBI by setting \"deprecated\" : \"true\"" 
+  ],
+  "deprecated": "true",
+  "tables" : [ {
+    "@context" : [ "http://www.w3.org/ns/csvw", {
+      "@language" : "en"
+    } ],
+    "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/" ],
+    "url" : "bees-only-interactions.tsv.gz",
+    "dcterms:bibliographicCitation" : "Seltmann KC, Poelen JH (2024) Likely Bee Interactions Extracted from Global Biotic Interactions Verbatim Data Product v0.6 hash://md5/89797a5a325ac5c50990581689718edf hash://sha256/946178b36c3ea2f2daa105ad244cf5d6cd236ec8c99956616557cf4e6666545b using Nomer's DiscoverLife Support.",
+    "delimiter" : "\t",
+    "headerRowCount" : 1,
+    "null" : [ "" ],
+    "tableSchema" : {
+      "columns" : [ {
+        "name" : "sourceTaxonId",
+        "titles" : "sourceTaxonId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonIds",
+        "titles" : "sourceTaxonIds",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonName",
+        "titles" : "sourceTaxonName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonRank",
+        "titles" : "sourceTaxonRank",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonPathNames",
+        "titles" : "sourceTaxonPathNames",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonPathIds",
+        "titles" : "sourceTaxonPathIds",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonPathRankNames",
+        "titles" : "sourceTaxonPathRankNames",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonSpeciesName",
+        "titles" : "sourceTaxonSpeciesName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonSpeciesId",
+        "titles" : "sourceTaxonSpeciesId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonSubgenusName",
+        "titles" : "sourceTaxonSubgenusName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonSubgenusId",
+        "titles" : "sourceTaxonSubgenusId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonGenusName",
+        "titles" : "sourceTaxonGenusName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonGenusId",
+        "titles" : "sourceTaxonGenusId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonFamilyName",
+        "titles" : "sourceTaxonFamilyName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonFamilyId",
+        "titles" : "sourceTaxonFamilyId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonOrderName",
+        "titles" : "sourceTaxonOrderName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonOrderId",
+        "titles" : "sourceTaxonOrderId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonClassName",
+        "titles" : "sourceTaxonClassName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonClassId",
+        "titles" : "sourceTaxonClassId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonPhylumName",
+        "titles" : "sourceTaxonPhylumName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonPhylumId",
+        "titles" : "sourceTaxonPhylumId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonKingdomName",
+        "titles" : "sourceTaxonKingdomName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonKingdomId",
+        "titles" : "sourceTaxonKingdomId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceId",
+        "titles" : "sourceId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceOccurrenceId",
+        "titles" : "sourceOccurrenceId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceInstitutionCode",
+        "titles" : "sourceInstitutionCode",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceCollectionCode",
+        "titles" : "sourceCollectionCode",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceCatalogNumber",
+        "titles" : "sourceCatalogNumber",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceBasisOfRecordId",
+        "titles" : "sourceBasisOfRecordId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceBasisOfRecordName",
+        "titles" : "sourceBasisOfRecordName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceLifeStageId",
+        "titles" : "sourceLifeStageId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceLifeStageName",
+        "titles" : "sourceLifeStageName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceBodyPartId",
+        "titles" : "sourceBodyPartId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceBodyPartName",
+        "titles" : "sourceBodyPartName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourcePhysiologicalStateId",
+        "titles" : "sourcePhysiologicalStateId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourcePhysiologicalStateName",
+        "titles" : "sourcePhysiologicalStateName",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceSexId",
+        "titles" : "sourceSexId",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceSexName",
+        "titles" : "sourceSexName",
+        "datatype" : "string"
+      }, {
+        "name" : "interactionTypeName",
+        "titles" : "interactionTypeName",
+        "datatype" : "string"
+      }, {
+        "name" : "interactionTypeId",
+        "titles" : "interactionTypeId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonId",
+        "titles" : "targetTaxonId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonIds",
+        "titles" : "targetTaxonIds",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonName",
+        "titles" : "targetTaxonName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonRank",
+        "titles" : "targetTaxonRank",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonPathNames",
+        "titles" : "targetTaxonPathNames",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonPathIds",
+        "titles" : "targetTaxonPathIds",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonPathRankNames",
+        "titles" : "targetTaxonPathRankNames",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonSpeciesName",
+        "titles" : "targetTaxonSpeciesName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonSpeciesId",
+        "titles" : "targetTaxonSpeciesId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonSubgenusName",
+        "titles" : "targetTaxonSubgenusName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonSubgenusId",
+        "titles" : "targetTaxonSubgenusId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonGenusName",
+        "titles" : "targetTaxonGenusName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonGenusId",
+        "titles" : "targetTaxonGenusId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonFamilyName",
+        "titles" : "targetTaxonFamilyName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonFamilyId",
+        "titles" : "targetTaxonFamilyId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonOrderName",
+        "titles" : "targetTaxonOrderName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonOrderId",
+        "titles" : "targetTaxonOrderId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonClassName",
+        "titles" : "targetTaxonClassName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonClassId",
+        "titles" : "targetTaxonClassId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonPhylumName",
+        "titles" : "targetTaxonPhylumName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonPhylumId",
+        "titles" : "targetTaxonPhylumId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonKingdomName",
+        "titles" : "targetTaxonKingdomName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonKingdomId",
+        "titles" : "targetTaxonKingdomId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetId",
+        "titles" : "targetId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetOccurrenceId",
+        "titles" : "targetOccurrenceId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetInstitutionCode",
+        "titles" : "targetInstitutionCode",
+        "datatype" : "string"
+      }, {
+        "name" : "targetCollectionCode",
+        "titles" : "targetCollectionCode",
+        "datatype" : "string"
+      }, {
+        "name" : "targetCatalogNumber",
+        "titles" : "targetCatalogNumber",
+        "datatype" : "string"
+      }, {
+        "name" : "targetBasisOfRecordId",
+        "titles" : "targetBasisOfRecordId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetBasisOfRecordName",
+        "titles" : "targetBasisOfRecordName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetLifeStageId",
+        "titles" : "targetLifeStageId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetLifeStageName",
+        "titles" : "targetLifeStageName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetBodyPartId",
+        "titles" : "targetBodyPartId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetBodyPartName",
+        "titles" : "targetBodyPartName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetPhysiologicalStateId",
+        "titles" : "targetPhysiologicalStateId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetPhysiologicalStateName",
+        "titles" : "targetPhysiologicalStateName",
+        "datatype" : "string"
+      }, {
+        "name" : "targetSexId",
+        "titles" : "targetSexId",
+        "datatype" : "string"
+      }, {
+        "name" : "targetSexName",
+        "titles" : "targetSexName",
+        "datatype" : "string"
+      }, {
+        "name" : "decimalLatitude",
+        "titles" : "decimalLatitude",
+        "datatype" : "string"
+      }, {
+        "name" : "decimalLongitude",
+        "titles" : "decimalLongitude",
+        "datatype" : "string"
+      }, {
+        "name" : "localityId",
+        "titles" : "localityId",
+        "datatype" : "string"
+      }, {
+        "name" : "localityName",
+        "titles" : "localityName",
+        "datatype" : "string"
+      }, {
+        "name" : "eventDate",
+        "titles" : "eventDate",
+        "datatype" : "string"
+      }, {
+        "name" : "argumentTypeId",
+        "titles" : "argumentTypeId",
+        "datatype" : "string"
+      }, {
+        "name" : "referenceCitation",
+        "titles" : "referenceCitation",
+        "datatype" : "string"
+      }, {
+        "name" : "referenceDoi",
+        "titles" : "referenceDoi",
+        "datatype" : "string"
+      }, {
+        "name" : "referenceUrl",
+        "titles" : "referenceUrl",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceCitation",
+        "titles" : "sourceCitation",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceNamespace",
+        "titles" : "sourceNamespace",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceArchiveURI",
+        "titles" : "sourceArchiveURI",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceDOI",
+        "titles" : "sourceDOI",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceLastSeenAtUnixEpoch",
+        "titles" : "sourceLastSeenAtUnixEpoch",
+        "datatype" : "string"
+      } ]
+    }
+  } ]
+}
