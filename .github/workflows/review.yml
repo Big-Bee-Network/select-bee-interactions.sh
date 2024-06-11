@@ -38,10 +38,10 @@ jobs:
       - name: Share review report
         uses: actions/upload-artifact@v4
         with:
-          name: review-report
+          name: review-report-${{ matrix.globi-version }}
           path: |
-            README.txt
-            datasets/
-            index.*
-            indexed-*
-            review*
+            examples/${{ matrix.globi-version }}/README.txt
+            examples/${{ matrix.globi-version }}/datasets/
+            examples/${{ matrix.globi-version }}/index.*
+            examples/${{ matrix.globi-version }}/indexed-*
+            examples/${{ matrix.globi-version }}/review*
