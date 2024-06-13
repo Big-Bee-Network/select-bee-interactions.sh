@@ -50,7 +50,8 @@ function interactions {
    | gunzip
 }
 
-function header {
+
+function header_fields {
   # prints the first linke of the interactions to be used as the header
   # of the original results
   interactions\
@@ -58,9 +59,19 @@ function header {
    | tr '\t' '\n'
 }
 
+function header {
+  # generates header of aligned interaction table
+  cat\
+   <(interactions | head -1 | tr -d '\n')\
+   <(echo -ne "\t")\
+   <(echo -e "\tApis mellifera" | nomer append --include-header discoverlife | head -n1 | cut -f3- | sed 's/resolved/alignedSourceTaxon/g' | sed 's/relationName/alignedSourceTaxonRelationName/g' | tr -d '\n')\
+   <(echo -ne "\t")\
+   <(echo -e "\tApis mellifera" | nomer append --include-header discoverlife | head -n1 | cut -f3- | sed 's/resolved/alignedTargetTaxon/g' | sed 's/relationName/alignedTargetTaxonRelationName/g') 
+}
+
 function find_index_of_field_header {
   # get the column number (if any) for provided input
-  header\
+  header_fields\
    | nl -v 0 -s ':'\
    | grep "$1"\
    | $(echo cut -d':' -f1)\
@@ -69,7 +80,7 @@ function find_index_of_field_header {
 
 function number_of_fields {
   # counts the number of columns in the header
-  header | wc -l 
+  header_fields | wc -l 
 }
 
 function schema {
@@ -90,12 +101,11 @@ function select_bee_interactions {
    | nomer append --properties <(schema "sourceTaxonName") discoverlife `# align provided names with the discoverlife matcher/checklist`\
    | nomer append --properties <(schema "targetTaxonName") discoverlife\
    | grep -v NONE.*NONE `# only include interactions with one or more names known to DiscoverLife bee checklist`\
-   | grep -E "Andrenidae|Apidae|Colletidae|Halictidae|Megachilidae|Melittidae|Stenotritidae" `# only include interaction records that mention at least one of the known bee families`\
-   | cut -f1-$(number_of_fields) `# only include the original verbatim data, not the appended alignments`
+   | grep -E "Andrenidae|Apidae|Colletidae|Halictidae|Megachilidae|Melittidae|Stenotritidae" `# only include interaction records that mention at least one of the known bee families`
 }
 
 cat `# create a file with a header and interactions with bees only`\
- <(interactions | head -n1) `# print the header`\
+ <(header) `# print the header`\
  <(interactions\
  | pv -l\
  | select_bee_interactions `# then append selected bee interactions`\
