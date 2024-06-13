@@ -47,7 +47,7 @@ function interactions {
   preston cat --remote https://linker.bio ${interactions_tsv_gz_hash} > /dev/null
   # get the interaction data, and uncompress
   preston cat ${interactions_tsv_gz_hash}\
-   | gunzip
+   | gunzip | head
 }
 
 
@@ -64,9 +64,9 @@ function header {
   cat\
    <(interactions | head -1 | tr -d '\n')\
    <(echo -ne "\t")\
-   <(echo -e "\tApis mellifera" | nomer append --include-header discoverlife | head -n1 | cut -f3- | sed 's/resolved/alignedSourceTaxon/g' | sed 's/relationName/alignedSourceTaxonRelationName/g' | tr -d '\n')\
+   <(echo -e "\tApis mellifera" | nomer append --properties <(schema "sourceTaxonName") --include-header discoverlife | head -n1 | cut -f3- | sed 's/resolved/alignedSourceTaxon/g' | sed 's/relationName/alignedSourceTaxonRelationName/g' | sed -E 's/[.]([a-z])/\U\1/g' | tr -d '\n')\
    <(echo -ne "\t")\
-   <(echo -e "\tApis mellifera" | nomer append --include-header discoverlife | head -n1 | cut -f3- | sed 's/resolved/alignedTargetTaxon/g' | sed 's/relationName/alignedTargetTaxonRelationName/g') 
+   <(echo -e "\tApis mellifera" | nomer append --properties <(schema "sourceTaxonName") --include-header discoverlife | head -n1 | cut -f3- | sed 's/resolved/alignedTargetTaxon/g' | sed 's/relationName/alignedTargetTaxonRelationName/g' | sed -E 's/[.]([a-z])/\U\1/g') 
 }
 
 function find_index_of_field_header {
@@ -90,6 +90,7 @@ function schema {
   echo "$(cat <<_EOF_
 nomer.schema.input=[{"column": ${field_index},"type":"name"}]
 nomer.schema.output=[{"column": ${field_index},"type":"name"}]
+nomer.append.schema.output=[{"column":0,"type":"externalUrl"},{"column": 1,"type":"name"},{"column": 2,"type":"authorship"},{"column": 3,"type":"rank"},{"column": 4,"type":"commonNames"},{"column": 5, "type":"path.kingdom.name"},{"column": 6, "type":"path.kingdom.id"},{"column": 7, "type":"path.kingdom.authorship"},{"column": 8, "type":"path.phylum.name"},{"column": 9, "type":"path.phylum.id"},{"column": 10, "type":"path.phylum.authorship"},{"column":11, "type":"path.class.name"},{"column":12, "type":"path.class.id"},{"column": 13, "type":"path.class.authorship"},{"column":14, "type":"path.order.name"},{"column":15, "type":"path.order.id"},{"column": 16, "type":"path.order.authorship"},{"column":17, "type":"path.family.name"},{"column":18, "type":"path.family.id"},{"column": 19, "type":"path.family.authorship"},{"column":20, "type":"path.subfamily.name"},{"column":21, "type":"path.subfamily.id"},{"column": 22, "type":"path.subfamily.authorship"},{"column":23, "type":"path.tribe.name"},{"column":24, "type":"path.tribe.id"},{"column": 25, "type":"path.tribe.authorship"},{"column":26, "type":"path.subtribe.name"},{"column":27, "type":"path.subtribe.id"},{"column": 28, "type":"path.subtribe.authorship"},{"column":29, "type":"path.genus.name"},{"column":30, "type":"path.genus.id"},{"column": 31, "type":"path.genus.authorship"},{"column":32, "type":"path.subgenus.name"},{"column":33, "type":"path.subgenus.id"},{"column": 34, "type":"path.subgenus.authorship"},{"column":35, "type":"path.species.name"},{"column":36, "type":"path.species.id"},{"column": 37, "type":"path.species.authorship"},{"column":38, "type":"path.subspecies.name"},{"column":39, "type":"path.subspecies.id"},{"column": 40, "type":"path.subspecies.authorship"},{"column":41,"type":"path"},{"column":42,"type":"pathIds"},{"column":43,"type":"pathNames"},{"column":44,"type":"pathAuthorships"},{"column":45,"type":"nameSource"},{"column":46,"type":"nameSourceUrl"},{"column":47,"type":"nameSourceAccessedAt"}]
 _EOF_
 )"
 }
