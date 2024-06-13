@@ -47,7 +47,7 @@ function interactions {
   preston cat --remote https://linker.bio ${interactions_tsv_gz_hash} > /dev/null
   # get the interaction data, and uncompress
   preston cat ${interactions_tsv_gz_hash}\
-   | gunzip | head
+   | gunzip
 }
 
 
