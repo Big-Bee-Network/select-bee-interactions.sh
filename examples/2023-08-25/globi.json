@@ -12,7 +12,7 @@
       "@language" : "en"
     } ],
     "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/" ],
-    "url" : "bees-only-interactions.tsv.gz",
+    "url" : "bees-only-interactions-no-alignment.tsv.gz",
     "dcterms:bibliographicCitation" : "Seltmann KC, Poelen JH (2024) Likely Bee Interactions Extracted from Global Biotic Interactions Verbatim Data Product v0.6 hash://md5/89797a5a325ac5c50990581689718edf hash://sha256/946178b36c3ea2f2daa105ad244cf5d6cd236ec8c99956616557cf4e6666545b using Nomer's DiscoverLife Support.",
     "delimiter" : "\t",
     "headerRowCount" : 1,
